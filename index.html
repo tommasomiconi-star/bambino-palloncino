@@ -25,13 +25,12 @@
       max-width: 100vw;
     }
     @keyframes pressaAnim {
-      0%   { transform: translateY(-1200px); }
-      28%  { transform: translateY(200px); }
-      34%  { transform: translateY(200px); }
-      100% { transform: translateY(-1200px); }
+      0%   { transform: translateY(-800px); }
+      25%  { transform: translateY(900px); }
+      30%  { transform: translateY(900px); }
+      100% { transform: translateY(-800px); }
     }
     #pressa {
-      transform: translateY(-1200px);
       animation: pressaAnim 5.3s ease-in-out infinite;
     }
   </style>
@@ -910,7 +909,7 @@
     </g>
   </g>
   <g id="pressa">
-    <g transform="translate(800, 200) scale(0.6)">
+    <g transform="translate(800, 0) scale(0.15)">
       <!-- path grigio lattina -->
       <path fill="#636363" d="M1016.81,1463.37h0c-70.77,37-155.18,37-225.95,0h0V161.62h225.95v1301.75Z"/>
       <!-- path nero superiore -->
@@ -946,7 +945,7 @@
     
     setTimeout(() => {
       gialloSchiacciato.style.visibility = 'visible';
-    }, 4300);
+    }, 5000);
   }
   
   syncVisibility();

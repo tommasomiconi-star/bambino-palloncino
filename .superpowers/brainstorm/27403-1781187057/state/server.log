@@ -1,0 +1,4 @@
+{"type":"server-started","port":60808,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:60808","screen_dir":"/Users/tommyfrostmiconi/Documents/GitHub/bambino palloncino/.superpowers/brainstorm/27403-1781187057/content","state_dir":"/Users/tommyfrostmiconi/Documents/GitHub/bambino palloncino/.superpowers/brainstorm/27403-1781187057/state"}
+{"type":"screen-added","file":"/Users/tommyfrostmiconi/Documents/GitHub/bambino palloncino/.superpowers/brainstorm/27403-1781187057/content/waiting.html"}
+{"type":"screen-added","file":"/Users/tommyfrostmiconi/Documents/GitHub/bambino palloncino/.superpowers/brainstorm/27403-1781187057/content/pressa-position.html"}
+{"type":"server-stopped","reason":"idle timeout"}

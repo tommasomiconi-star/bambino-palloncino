@@ -26,8 +26,8 @@
     }
     @keyframes pressaAnim {
       0%   { transform: translateY(-800px); }
-      25%  { transform: translateY(900px); }
-      30%  { transform: translateY(900px); }
+      15%  { transform: translateY(900px); }
+      20%  { transform: translateY(900px); }
       100% { transform: translateY(-800px); }
     }
     #pressa {
@@ -909,7 +909,7 @@
     </g>
   </g>
   <g id="pressa">
-    <g transform="translate(800, 0) scale(0.15)">
+    <g transform="translate(720, 0) scale(0.25)">
       <!-- path grigio lattina -->
       <path fill="#636363" d="M1016.81,1463.37h0c-70.77,37-155.18,37-225.95,0h0V161.62h225.95v1301.75Z"/>
       <!-- path nero superiore -->
@@ -945,7 +945,7 @@
     
     setTimeout(() => {
       gialloSchiacciato.style.visibility = 'visible';
-    }, 5000);
+    }, 3500);
   }
   
   syncVisibility();

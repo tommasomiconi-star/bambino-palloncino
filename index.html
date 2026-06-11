@@ -924,5 +924,33 @@
     </g>
   </g>
 </svg>  </div>
+    <script>
+(function() {
+  const giallo = document.getElementById('giallo');
+  const gialloSchiacciato = document.getElementById('giallo_schiacciato');
+  const pressa = document.getElementById('pressa');
+  
+  if (!giallo || !gialloSchiacciato || !pressa) {
+    console.error('Elementi non trovati');
+    return;
+  }
+  
+  function syncVisibility() {
+    giallo.style.visibility = 'visible';
+    gialloSchiacciato.style.visibility = 'hidden';
+    
+    setTimeout(() => {
+      giallo.style.visibility = 'hidden';
+    }, 1300);
+    
+    setTimeout(() => {
+      gialloSchiacciato.style.visibility = 'visible';
+    }, 4300);
+  }
+  
+  syncVisibility();
+  pressa.addEventListener('animationiteration', syncVisibility);
+})();
+  </script>
 </body>
 </html>

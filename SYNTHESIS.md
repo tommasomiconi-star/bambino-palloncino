@@ -47,6 +47,11 @@ La transition CSS è `transform 1.2s ease-in-out`.
 **Y=900** = copre completamente personaggi della riga bassa
 **Y=460** = copre completamente personaggi della riga alta
 
+## Movimento Finale (ritorno a Giallo)
+
+Dopo aver schiacciato Rosso, la pressa risale a Y=0 e **scorre a destra** verso X=-5 (sopra Giallo) in 1.2s, arrivando alla posizione iniziale.
+A 22.6s il ciclo `runCycle()` ricomincia con `resetAll()` e la pressa è già pronta sopra Giallo.
+
 ---
 
 ## Timeline JavaScript (22.6s ciclo)
@@ -74,9 +79,8 @@ La transition CSS è `transform 1.2s ease-in-out`.
 17.6s  → Risale in alto
 18.8s  → Si sposta su Rosso
 20.0s  → Scende su Rosso
-21.2s  → Crush Rosso
-21.4s  → Risale in alto e resta
-22.6s  → Loop riavvia (resetAll)
+ 21.4s  → Pressa risale a Y=0 e scorre a destra verso X=-5 (Giallo)
+ 22.6s  → Loop riavvia (resetAll) - la pressa è già sopra Giallo
 ```
 
 ---

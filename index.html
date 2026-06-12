@@ -1837,6 +1837,7 @@
   <path id="sparafoglie" class="cls-26" style="visibility:hidden" d="M-1.38,800.92l72.65,7.3c8.46.96,17.03.09,25.12-2.55h0c26.22-8.56,41.97-35.3,36.73-62.38h0c-.62-3.23-3.28-5.67-6.56-6.02l-127.94-10.9v74.55Z"/>
 </svg>
   </div>
+  <audio id="pressaSound" src="pressa/freesound_community-homemade-hydraulic-hoist-30527.mp3" preload="auto"></audio>
   <script>
 (function() {
   const chars = {
@@ -1904,9 +1905,32 @@
   }
 
   const pressa = document.getElementById('pressa');
+  const audio = document.getElementById('pressaSound');
+
+  function playPressaSound() {
+    if (audio) {
+      audio.currentTime = 2; // parte sempre dal secondo 0:02
+      audio.play().catch(function(e){});
+    }
+  }
+  function stopPressaSound() {
+    if (audio) {
+      audio.pause();
+    }
+  }
+
+  // Ferma il suono ogni volta che la pressa finisce un movimento
+  pressa.addEventListener('transitionend', function() {
+    stopPressaSound();
+  });
+
   function movePressa(x, y, duration) {
     if (duration !== undefined) pressa.style.transitionDuration = duration + 's';
     pressa.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+    // Suono solo quando scende verso un personaggio (Y > 0)
+    if (y > 0) {
+      playPressaSound();
+    }
   }
 
   // Timeline: ciclo completo

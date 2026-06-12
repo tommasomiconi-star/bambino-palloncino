@@ -1863,18 +1863,44 @@
     }
   }
 
-  // Initial state: all normal visible, all crushed hidden
+  // Setup transitions on crushed characters for slide-out
+  for (const [name, ids] of Object.entries(chars)) {
+    els[name + '_crushed'].style.transition = 'transform 1.5s ease-in-out';
+    els[name].style.transition = 'transform 1.2s ease-in-out';
+  }
+
+  // Initial state: all normal positioned above, all crushed hidden, transforms reset
   function resetAll() {
     for (const [name, ids] of Object.entries(chars)) {
+      els[name].style.transition = 'none';
+      els[name].style.transform = 'translateY(-2000px)';
       els[name].style.visibility = 'visible';
+      // Snap crushed transform back without animation
       els[name + '_crushed'].style.visibility = 'hidden';
+      els[name + '_crushed'].style.transition = 'none';
+      els[name + '_crushed'].style.transform = '';
+      void els[name + '_crushed'].offsetWidth;
+      els[name + '_crushed'].style.transition = 'transform 1.5s ease-in-out';
+      void els[name].offsetWidth;
+      els[name].style.transition = 'transform 1.2s ease-in-out';
     }
   }
 
-  // Crush a character
+  // Drop in all normal characters from above
+  function dropInNormals() {
+    for (const [name, ids] of Object.entries(chars)) {
+      els[name].style.transform = 'translateY(0)';
+    }
+  }
+
+  // Crush a character (hide normal, show crushed, then drop it)
   function crush(name) {
     els[name].style.visibility = 'hidden';
     els[name + '_crushed'].style.visibility = 'visible';
+    // Fa cadere la lattina schiacciata dopo 0.5 secondi
+    setTimeout(function(){
+      els[name + '_crushed'].style.transform = 'translateY(2500px)';
+    }, 500);
   }
 
   const pressa = document.getElementById('pressa');
@@ -1887,51 +1913,53 @@
   // La pressa inizia in alto (Y=0) sopra Giallo (dal CSS)
   function runCycle() {
     resetAll();
-    // 0.0s: pressa visibile in alto sopra Giallo
-    // 1.0s -> 2.2s: scende su Giallo
-    setTimeout(function(){ movePressa(-5, 900, 1.2); }, 1000);
-    setTimeout(function(){ crush('giallo'); }, 2200);
-    // 2.2s -> 3.4s: risale in alto
-    setTimeout(function(){ movePressa(-5, 0, 1.2); }, 2400);
-    // 3.4s -> 4.6s: si sposta su Viola (in alto)
-    setTimeout(function(){ movePressa(-322, 0, 1.2); }, 3600);
-    // 4.6s -> 5.8s: scende su Viola
-    setTimeout(function(){ movePressa(-322, 900, 1.2); }, 4800);
-    setTimeout(function(){ crush('viola'); }, 6000);
-    // 5.8s -> 7.0s: risale in alto
-    setTimeout(function(){ movePressa(-322, 0, 1.2); }, 6200);
-    // 7.0s -> 8.2s: si sposta su Verde (in alto)
-    setTimeout(function(){ movePressa(-637, 0, 1.2); }, 7400);
-    // 8.2s -> 9.4s: scende su Verde
-    setTimeout(function(){ movePressa(-637, 900, 1.2); }, 8600);
-    setTimeout(function(){ crush('verde'); }, 9800);
-    // 9.4s -> 10.6s: risale in alto
-    setTimeout(function(){ movePressa(-637, 0, 1.2); }, 10000);
-    // 10.6s -> 11.8s: si sposta su Blu (in alto)
-    setTimeout(function(){ movePressa(-5, 0, 1.2); }, 11200);
-    // 11.8s -> 13.0s: scende su Blu
-    setTimeout(function(){ movePressa(-5, 460, 1.2); }, 12400);
-    setTimeout(function(){ crush('blu'); }, 13600);
-    // 13.0s -> 14.2s: risale in alto
-    setTimeout(function(){ movePressa(-5, 0, 1.2); }, 13800);
-    // 14.2s -> 15.4s: si sposta su Arancione (in alto)
-    setTimeout(function(){ movePressa(-322, 0, 1.2); }, 15000);
-    // 15.4s -> 16.6s: scende su Arancione
-    setTimeout(function(){ movePressa(-322, 460, 1.2); }, 16200);
-    setTimeout(function(){ crush('arancione'); }, 17400);
-    // 16.6s -> 17.8s: risale in alto
-    setTimeout(function(){ movePressa(-322, 0, 1.2); }, 17600);
-    // 17.8s -> 19.0s: si sposta su Rosso (in alto)
-    setTimeout(function(){ movePressa(-637, 0, 1.2); }, 18800);
-    // 19.0s -> 20.2s: scende su Rosso
-    setTimeout(function(){ movePressa(-637, 460, 1.2); }, 20000);
-    setTimeout(function(){ crush('rosso'); }, 21200);
-    // 20.2s -> 21.4s: scorre a destra verso posizione iniziale sopra Giallo
-    setTimeout(function(){ movePressa(-5, 0, 1.2); }, 21400);
+    // 0.0s: tutti i normali sono sopra il frame (nascosti fuori schermo)
+    // 0.1s -> 1.3s: i personaggi interi cadono nella loro posizione
+    setTimeout(function(){ dropInNormals(); }, 100);
+    // 2.5s -> 3.7s: scende su Giallo
+    setTimeout(function(){ movePressa(-5, 900, 1.2); }, 2500);
+    setTimeout(function(){ crush('giallo'); }, 3700);
+    // 3.7s -> 4.9s: risale in alto
+    setTimeout(function(){ movePressa(-5, 0, 1.2); }, 3900);
+    // 4.9s -> 6.1s: si sposta su Viola (in alto)
+    setTimeout(function(){ movePressa(-322, 0, 1.2); }, 5100);
+    // 6.1s -> 7.3s: scende su Viola
+    setTimeout(function(){ movePressa(-322, 900, 1.2); }, 6300);
+    setTimeout(function(){ crush('viola'); }, 7500);
+    // 7.3s -> 8.5s: risale in alto
+    setTimeout(function(){ movePressa(-322, 0, 1.2); }, 7700);
+    // 8.5s -> 9.7s: si sposta su Verde (in alto)
+    setTimeout(function(){ movePressa(-637, 0, 1.2); }, 8900);
+    // 9.7s -> 10.9s: scende su Verde
+    setTimeout(function(){ movePressa(-637, 900, 1.2); }, 10100);
+    setTimeout(function(){ crush('verde'); }, 11300);
+    // 10.9s -> 12.1s: risale in alto
+    setTimeout(function(){ movePressa(-637, 0, 1.2); }, 11500);
+    // 12.1s -> 13.3s: si sposta su Blu (in alto)
+    setTimeout(function(){ movePressa(-5, 0, 1.2); }, 12700);
+    // 13.3s -> 14.5s: scende su Blu
+    setTimeout(function(){ movePressa(-5, 460, 1.2); }, 13900);
+    setTimeout(function(){ crush('blu'); }, 15100);
+    // 14.5s -> 15.7s: risale in alto
+    setTimeout(function(){ movePressa(-5, 0, 1.2); }, 15300);
+    // 15.7s -> 16.9s: si sposta su Arancione (in alto)
+    setTimeout(function(){ movePressa(-322, 0, 1.2); }, 16500);
+    // 16.9s -> 18.1s: scende su Arancione
+    setTimeout(function(){ movePressa(-322, 460, 1.2); }, 17700);
+    setTimeout(function(){ crush('arancione'); }, 18900);
+    // 18.1s -> 19.3s: risale in alto
+    setTimeout(function(){ movePressa(-322, 0, 1.2); }, 19100);
+    // 19.3s -> 20.5s: si sposta su Rosso (in alto)
+    setTimeout(function(){ movePressa(-637, 0, 1.2); }, 20300);
+    // 20.5s -> 21.7s: scende su Rosso
+    setTimeout(function(){ movePressa(-637, 460, 1.2); }, 21500);
+    setTimeout(function(){ crush('rosso'); }, 22700);
+    // 21.7s -> 22.9s: scorre a destra verso posizione iniziale sopra Giallo
+    setTimeout(function(){ movePressa(-5, 0, 1.2); }, 22900);
   }
 
   runCycle();
-  setInterval(runCycle, 22600);
+  setInterval(runCycle, 25000);
 })();
   </script>
 </body>

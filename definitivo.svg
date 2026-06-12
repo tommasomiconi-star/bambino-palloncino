@@ -1,37 +1,4 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Giallo Schiacciato</title>
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: #000;
-    }
-    #stage {
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    svg {
-      max-height: 100vh;
-      max-width: 100vw;
-    }
-    #pressa {
-      transition: transform 1.2s ease-in-out;
-      transform: translate(-5px, 0px);
-    }
-  </style>
-</head>
-<body>
-  <div id="stage">
+<?xml version="1.0" encoding="UTF-8"?>
 <svg id="Livello_2" data-name="Livello 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1080 1920">
   <defs>
     <style>
@@ -1542,6 +1509,18 @@
     <polygon class="cls-78" points="845.78 988.85 837.14 989.31 845.78 991.83 841.02 994.74 855.04 993 869.12 997.27 879.78 992.4 891.68 994.74 891.07 991.83 900.53 991.16 892.21 990.64 899.68 989.09 891.77 989.31 868.84 991.59 845.78 988.85"/>
     <path d="M854.35,989.87l-5.43.24,5.43,1.32-2.99,1.52,8.81-.91,8.84,2.23,6.7-2.54,8.71.8-1.62-1.09,5.94-.35-5.23-.27,4.69-.81-4.97.12-1.09.13c-8.84,1.09-17.79,1.02-26.62-.21l-1.19-.17Z"/>
   </g>
+  <g id="pressa">
+    <path class="cls-25" d="M984.42,232.27h0c-70.77,37-155.18,37-225.95,0h0v-1301.75h225.95V232.27Z"/>
+    <g>
+      <path d="M984.42,95.06h0c-72.03,11.56-145.41,11.98-217.56,1.25l-8.38-1.25v-23.49l10.56,1.54c70.73,10.31,142.61,9.9,213.23-1.2l2.16-.34v23.49Z"/>
+      <polygon class="cls-82" points="787.58 98.96 768.35 96.58 779.16 74.25 798.39 76.63 787.58 98.96"/>
+      <polygon class="cls-82" points="827.1 102.65 807.76 101.57 817.04 78.57 836.39 79.64 827.1 102.65"/>
+      <polygon class="cls-82" points="868.59 104.05 849.32 103.7 857.28 80.47 876.65 80.52 868.59 104.05"/>
+      <polygon class="cls-82" points="906.91 103.3 887.59 103.9 894.67 80.19 913.96 79.29 906.91 103.3"/>
+      <polygon class="cls-82" points="949.25 99.81 930.32 101.63 936.81 77.46 956.39 75.51 949.25 99.81"/>
+      <polygon class="cls-82" points="984.42 71.57 977.88 72.44 972.3 96.9 984.42 95.06 984.42 71.57"/>
+    </g>
+  </g>
   <g id="blu_schiacciato" data-name="blu schiacciato">
     <path class="cls-83" d="M852.41,616.39l96.39,17.94c0,1-6.11,1.93-16.43,2.67-1.03,1.9-29.93,3.42-65.43,3.42s-65.46-1.58-65.46-3.53h2.49c-12.72-.87-20.51-1.87-20.91-2.57-.04-.06-96.39-18.09-96.39-18.09l4.4-5.27h1.51c-.99-.18-1.51-.37-1.51-.57v-1.55h1c-.66-.15-1-.31-1-.47,0-1.51,41.4-3.24,78.88-3.24s56.83,1.73,56.83,3.24c0,.16,25.63,8.01,25.63,8.01Z"/>
     <path d="M920.31,631.98c0,8.37-24.86,15.16-55.53,15.16s-55.53-6.79-55.53-15.16"/>
@@ -1822,117 +1801,5 @@
     <polygon class="cls-78" points="205.53 992.39 196.76 992.86 205.53 995.42 200.7 998.38 214.94 996.61 229.24 1000.95 240.07 995.99 252.16 998.38 251.54 995.42 261.15 994.74 252.7 994.21 260.29 992.63 252.25 992.86 228.95 995.17 205.53 992.39"/>
     <path d="M214.23,993.43l-5.51.24,5.51,1.34-3.03,1.54,8.95-.93,8.98,2.26,6.81-2.58,8.85.81-1.64-1.11,6.04-.35-5.31-.28,4.77-.82-5.05.12-1.11.14c-8.98,1.11-18.07,1.04-27.04-.21l-1.22-.17h0Z"/>
   </g>
-  <g id="pressa">
-    <path class="cls-25" d="M984.42,232.27h0c-70.77,37-155.18,37-225.95,0h0v-1301.75h225.95V232.27Z"/>
-    <g>
-      <path d="M984.42,95.06h0c-72.03,11.56-145.41,11.98-217.56,1.25l-8.38-1.25v-23.49l10.56,1.54c70.73,10.31,142.61,9.9,213.23-1.2l2.16-.34v23.49Z"/>
-      <polygon class="cls-82" points="787.58 98.96 768.35 96.58 779.16 74.25 798.39 76.63 787.58 98.96"/>
-      <polygon class="cls-82" points="827.1 102.65 807.76 101.57 817.04 78.57 836.39 79.64 827.1 102.65"/>
-      <polygon class="cls-82" points="868.59 104.05 849.32 103.7 857.28 80.47 876.65 80.52 868.59 104.05"/>
-      <polygon class="cls-82" points="906.91 103.3 887.59 103.9 894.67 80.19 913.96 79.29 906.91 103.3"/>
-      <polygon class="cls-82" points="949.25 99.81 930.32 101.63 936.81 77.46 956.39 75.51 949.25 99.81"/>
-      <polygon class="cls-82" points="984.42 71.57 977.88 72.44 972.3 96.9 984.42 95.06 984.42 71.57"/>
-    </g>
-  </g>
-  <path id="sparafoglie" class="cls-26" style="visibility:hidden" d="M-1.38,800.92l72.65,7.3c8.46.96,17.03.09,25.12-2.55h0c26.22-8.56,41.97-35.3,36.73-62.38h0c-.62-3.23-3.28-5.67-6.56-6.02l-127.94-10.9v74.55Z"/>
+  <path id="sparafoglie" class="cls-26" d="M-1.38,800.92l72.65,7.3c8.46.96,17.03.09,25.12-2.55h0c26.22-8.56,41.97-35.3,36.73-62.38h0c-.62-3.23-3.28-5.67-6.56-6.02l-127.94-10.9v74.55Z"/>
 </svg>
-  </div>
-  <script>
-(function() {
-  const chars = {
-    giallo: { normal: 'giallo', crushed: 'giallo_schiacciato' },
-    viola: { normal: 'viola', crushed: 'viola_schiacciato' },
-    verde: { normal: 'verde', crushed: 'verde_schiacciato' },
-    blu: { normal: 'blu', crushed: 'blu_schiacciato' },
-    arancione: { normal: 'arancione', crushed: 'arancione_schiacciato' },
-    rosso: { normal: 'rosso', crushed: 'rosso_schiacciato' }
-  };
-
-  // Get all elements
-  const els = {};
-  for (const [name, ids] of Object.entries(chars)) {
-    els[name] = document.getElementById(ids.normal);
-    els[name + '_crushed'] = document.getElementById(ids.crushed);
-  }
-
-  // Verify elements exist
-  for (const [key, el] of Object.entries(els)) {
-    if (!el) {
-      console.error('Elemento mancante:', key);
-      return;
-    }
-  }
-
-  // Initial state: all normal visible, all crushed hidden
-  function resetAll() {
-    for (const [name, ids] of Object.entries(chars)) {
-      els[name].style.visibility = 'visible';
-      els[name + '_crushed'].style.visibility = 'hidden';
-    }
-  }
-
-  // Crush a character
-  function crush(name) {
-    els[name].style.visibility = 'hidden';
-    els[name + '_crushed'].style.visibility = 'visible';
-  }
-
-  const pressa = document.getElementById('pressa');
-  function movePressa(x, y, duration) {
-    if (duration !== undefined) pressa.style.transitionDuration = duration + 's';
-    pressa.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
-  }
-
-  // Timeline: ciclo completo
-  // La pressa inizia in alto (Y=0) sopra Giallo (dal CSS)
-  function runCycle() {
-    resetAll();
-    // 0.0s: pressa visibile in alto sopra Giallo
-    // 1.0s -> 2.2s: scende su Giallo
-    setTimeout(function(){ movePressa(-5, 900, 1.2); }, 1000);
-    setTimeout(function(){ crush('giallo'); }, 2200);
-    // 2.2s -> 3.4s: risale in alto
-    setTimeout(function(){ movePressa(-5, 0, 1.2); }, 2400);
-    // 3.4s -> 4.6s: si sposta su Viola (in alto)
-    setTimeout(function(){ movePressa(-322, 0, 1.2); }, 3600);
-    // 4.6s -> 5.8s: scende su Viola
-    setTimeout(function(){ movePressa(-322, 900, 1.2); }, 4800);
-    setTimeout(function(){ crush('viola'); }, 6000);
-    // 5.8s -> 7.0s: risale in alto
-    setTimeout(function(){ movePressa(-322, 0, 1.2); }, 6200);
-    // 7.0s -> 8.2s: si sposta su Verde (in alto)
-    setTimeout(function(){ movePressa(-637, 0, 1.2); }, 7400);
-    // 8.2s -> 9.4s: scende su Verde
-    setTimeout(function(){ movePressa(-637, 900, 1.2); }, 8600);
-    setTimeout(function(){ crush('verde'); }, 9800);
-    // 9.4s -> 10.6s: risale in alto
-    setTimeout(function(){ movePressa(-637, 0, 1.2); }, 10000);
-    // 10.6s -> 11.8s: si sposta su Blu (in alto)
-    setTimeout(function(){ movePressa(-5, 0, 1.2); }, 11200);
-    // 11.8s -> 13.0s: scende su Blu
-    setTimeout(function(){ movePressa(-5, 460, 1.2); }, 12400);
-    setTimeout(function(){ crush('blu'); }, 13600);
-    // 13.0s -> 14.2s: risale in alto
-    setTimeout(function(){ movePressa(-5, 0, 1.2); }, 13800);
-    // 14.2s -> 15.4s: si sposta su Arancione (in alto)
-    setTimeout(function(){ movePressa(-322, 0, 1.2); }, 15000);
-    // 15.4s -> 16.6s: scende su Arancione
-    setTimeout(function(){ movePressa(-322, 460, 1.2); }, 16200);
-    setTimeout(function(){ crush('arancione'); }, 17400);
-    // 16.6s -> 17.8s: risale in alto
-    setTimeout(function(){ movePressa(-322, 0, 1.2); }, 17600);
-    // 17.8s -> 19.0s: si sposta su Rosso (in alto)
-    setTimeout(function(){ movePressa(-637, 0, 1.2); }, 18800);
-    // 19.0s -> 20.2s: scende su Rosso
-    setTimeout(function(){ movePressa(-637, 460, 1.2); }, 20000);
-    setTimeout(function(){ crush('rosso'); }, 21200);
-    // 20.2s -> 21.4s: risale in alto e resta
-    setTimeout(function(){ movePressa(-637, 0, 1.2); }, 21400);
-  }
-
-  runCycle();
-  setInterval(runCycle, 22600);
-})();
-  </script>
-</body>
-</html>

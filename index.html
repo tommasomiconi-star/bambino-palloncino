@@ -1838,6 +1838,11 @@
 </svg>
   </div>
   <audio id="pressaSound" src="pressa/freesound_community-homemade-hydraulic-hoist-30527.mp3" preload="auto"></audio>
+  <audio id="canCrush1" src="can%20crush/davidgallie-crushed-can-139334.mp3" preload="auto"></audio>
+  <audio id="canCrush2" src="can%20crush/freesound_community-crushed-can-89783.mp3" preload="auto"></audio>
+  <audio id="canCrush3" src="can%20crush/freesound_community-crushing-aluminum-can-101994.mp3" preload="auto"></audio>
+  <audio id="canCrush4" src="can%20crush/freesound_community-empty-soda-can-27819.mp3" preload="auto"></audio>
+  <audio id="canCrush5" src="can%20crush/mrstokes302-crush-can-sfx-mrstokes302-446361.mp3" preload="auto"></audio>
   <script>
 (function() {
   const chars = {
@@ -1894,10 +1899,11 @@
     }
   }
 
-  // Crush a character (hide normal, show crushed, then drop it)
+  // Crush a character (hide normal, show crushed, then drop it + sound)
   function crush(name) {
     els[name].style.visibility = 'hidden';
     els[name + '_crushed'].style.visibility = 'visible';
+    playCanCrushSound();
     // Fa cadere la lattina schiacciata dopo 0.5 secondi
     setTimeout(function(){
       els[name + '_crushed'].style.transform = 'translateY(2500px)';
@@ -1907,9 +1913,35 @@
   const pressa = document.getElementById('pressa');
   const audio = document.getElementById('pressaSound');
 
-  function playPressaSound() {
+  // Array di suoni can crush
+  const canCrushSounds = [
+    document.getElementById('canCrush1'),
+    document.getElementById('canCrush2'),
+    document.getElementById('canCrush3'),
+    document.getElementById('canCrush4'),
+    document.getElementById('canCrush5')
+  ];
+
+  function playCanCrushSound() {
+    // Sceglie un suono casuale tra quelli disponibili
+    const sound = canCrushSounds[Math.floor(Math.random() * canCrushSounds.length)];
+    if (sound) {
+      sound.currentTime = 0;
+      sound.play().catch(function(e){});
+      // Ferma dopo 0.8 secondi (solo l'impatto)
+      setTimeout(function(){ sound.pause(); }, 800);
+    }
+  }
+
+  function playPressaSoundDown() {
     if (audio) {
-      audio.currentTime = 2; // parte sempre dal secondo 0:02
+      audio.currentTime = 2; // parte dal secondo 0:02
+      audio.play().catch(function(e){});
+    }
+  }
+  function playPressaSoundUp() {
+    if (audio) {
+      audio.currentTime = 8; // parte dal secondo 0:08
       audio.play().catch(function(e){});
     }
   }
@@ -1919,17 +1951,17 @@
     }
   }
 
-  // Ferma il suono ogni volta che la pressa finisce un movimento
-  pressa.addEventListener('transitionend', function() {
-    stopPressaSound();
-  });
-
   function movePressa(x, y, duration) {
     if (duration !== undefined) pressa.style.transitionDuration = duration + 's';
     pressa.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
-    // Suono solo quando scende verso un personaggio (Y > 0)
     if (y > 0) {
-      playPressaSound();
+      // Scende: suono idraulico da 0:02, stop quando arriva in basso
+      playPressaSoundDown();
+      setTimeout(stopPressaSound, (duration || 1.2) * 1000);
+    } else {
+      // Torna su: suono da 0:08 a 0:09 (1 secondo)
+      playPressaSoundUp();
+      setTimeout(stopPressaSound, 1000);
     }
   }
 
@@ -1942,6 +1974,7 @@
     setTimeout(function(){ dropInNormals(); }, 100);
     // 2.5s -> 3.7s: scende su Giallo
     setTimeout(function(){ movePressa(-5, 900, 1.2); }, 2500);
+    setTimeout(function(){ playCanCrushSound(); }, 2700);
     setTimeout(function(){ crush('giallo'); }, 3700);
     // 3.7s -> 4.9s: risale in alto
     setTimeout(function(){ movePressa(-5, 0, 1.2); }, 3900);
@@ -1949,6 +1982,7 @@
     setTimeout(function(){ movePressa(-322, 0, 1.2); }, 5100);
     // 6.1s -> 7.3s: scende su Viola
     setTimeout(function(){ movePressa(-322, 900, 1.2); }, 6300);
+    setTimeout(function(){ playCanCrushSound(); }, 6500);
     setTimeout(function(){ crush('viola'); }, 7500);
     // 7.3s -> 8.5s: risale in alto
     setTimeout(function(){ movePressa(-322, 0, 1.2); }, 7700);
@@ -1956,6 +1990,7 @@
     setTimeout(function(){ movePressa(-637, 0, 1.2); }, 8900);
     // 9.7s -> 10.9s: scende su Verde
     setTimeout(function(){ movePressa(-637, 900, 1.2); }, 10100);
+    setTimeout(function(){ playCanCrushSound(); }, 10300);
     setTimeout(function(){ crush('verde'); }, 11300);
     // 10.9s -> 12.1s: risale in alto
     setTimeout(function(){ movePressa(-637, 0, 1.2); }, 11500);
@@ -1963,6 +1998,7 @@
     setTimeout(function(){ movePressa(-5, 0, 1.2); }, 12700);
     // 13.3s -> 14.5s: scende su Blu
     setTimeout(function(){ movePressa(-5, 460, 1.2); }, 13900);
+    setTimeout(function(){ playCanCrushSound(); }, 14100);
     setTimeout(function(){ crush('blu'); }, 15100);
     // 14.5s -> 15.7s: risale in alto
     setTimeout(function(){ movePressa(-5, 0, 1.2); }, 15300);
@@ -1970,6 +2006,7 @@
     setTimeout(function(){ movePressa(-322, 0, 1.2); }, 16500);
     // 16.9s -> 18.1s: scende su Arancione
     setTimeout(function(){ movePressa(-322, 460, 1.2); }, 17700);
+    setTimeout(function(){ playCanCrushSound(); }, 17900);
     setTimeout(function(){ crush('arancione'); }, 18900);
     // 18.1s -> 19.3s: risale in alto
     setTimeout(function(){ movePressa(-322, 0, 1.2); }, 19100);
@@ -1977,6 +2014,7 @@
     setTimeout(function(){ movePressa(-637, 0, 1.2); }, 20300);
     // 20.5s -> 21.7s: scende su Rosso
     setTimeout(function(){ movePressa(-637, 460, 1.2); }, 21500);
+    setTimeout(function(){ playCanCrushSound(); }, 21700);
     setTimeout(function(){ crush('rosso'); }, 22700);
     // 21.7s -> 22.9s: scorre a destra verso posizione iniziale sopra Giallo
     setTimeout(function(){ movePressa(-5, 0, 1.2); }, 22900);
